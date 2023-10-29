@@ -1,0 +1,42 @@
+/// Salomé Versailles G9
+/// exo 1 : taxi 
+
+
+let musiques = ["It's Ok", "JOLT", "Anissa", "Car Radio", "Côte Ouest"];
+
+let personnage = {
+  prenom: "John",
+  santeMentale: 10,
+};
+
+const trajet = {
+  radio: musiques,
+  feuxRouges: 30,
+  changements: 0,
+};
+
+function choisirMusique() {
+  let musiqueIndex = Math.floor(Math.random() * musiques.length);
+  return musiques[musiqueIndex];
+}
+
+for (let feuRouge = 1; feuRouge <= trajet.feuxRouges; feuRouge++) {
+  const musique = choisirMusique();
+  console.log("Au feu rouge ",feuRouge, "la musique jouée est : ",musique);
+  console.log("Feux restants : ", trajet.feuxRouges - feuRouge);
+
+  if (musique === "Anissa-Wejdene") {
+    personnage.santeMentale -= 1;
+    trajet.changements += 1;
+    console.log(personnage.prenom, "a perdu 1 point de santé mentale et a changé de taxi.");
+  }
+
+  if (personnage.santeMentale === 0) {
+    console.log("Explosion");
+    break;
+  }
+}
+
+if (personnage.santeMentale > 0) {
+  console.log(personnage.prenom, "est bien arrivé à destination en ",trajet.changements," changements de taxi."); // le nombre de changement ne s'affiche pas 
+}
